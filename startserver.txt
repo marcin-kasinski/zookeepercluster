@@ -1,0 +1,52 @@
+
+
+docker login 
+
+#PUSHING
+docker tag zookeepercluster marcinkasinski/zookeepercluster && docker push marcinkasinski/zookeepercluster
+
+cd /root/zookeepercluster/ && docker kill zookeepercluster || true && docker rm zookeepercluster || true && docker build -t zookeepercluster . \
+&& docker run --name zookeepercluster -e ZOOKEEPER_NODES="server.1=mainserver:2888:3888" -p 2181:2181 zookeepercluster \
+&& docker exec -i -t zookeepercluster /bin/bash
+
+docker start zookeepercluster && docker logs -f zookeepercluster 
+
+podącz sie ssh 
+docker exec -i -t zookeepercluster /bin/bash
+
+docker exec -i -t zookeepercluster tail -f /var/log/filebeat/filebeat
+
+
+
+docker exec -i -t logstash /bin/bash
+docker exec -i -t elk /bin/bash
+
+docker logs -f zookeepercluster
+
+docker port zookeepercluster
+
+
+mvn spring-boot:run
+
+mvn test -Dtest=AppTest,AppTest2
+
+
+docker run --name logstash --rm -it -v /root/11-kafka_input.conf:/usr/share/logstash/pipeline/logstash.conf -e XPACK_MONITORING_ENABLED=false docker.elastic.co/logstash/logstash:5.5.2
+
+
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper hdp1.local:2181,hdp2.local:2181,hdp3.local:2181
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --delete --zookeeper hdp1.local:2181,hdp2.local:2181,hdp3.local:2181 --topic logs
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --zookeeper hdp1.local:2181,hdp2.local:2181,hdp3.local:2181  --replication-factor 1 --partition 1 --topic logs
+
+/usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper hdp1.local:2181,hdp2.local:2181,hdp3.local:2181 --topic logs
+
+/usr/hdp/current/kafka-broker/bin/kafka-consumer-groups.sh --new-consumer --bootstrap-server hdp1.local:6667,hdp2.local:6667,hdp3.local:6667 --list
+/usr/hdp/current/kafka-broker/bin/kafka-consumer-groups.sh  --list --zookeeper hdp1.local:2181,hdp2.local:2181,hdp3.local:2181
+
+
+/usr/hdp/current/kafka-broker/bin/kafka-consumer-groups.sh  --list --bootstrap-server hdp1.local:6667,hdp2.local:6667,hdp3.local:6667
+
+/usr/hdp/current/kafka-broker/bin/zookeeper-shell.sh hdp1.local:2181,hdp2.local:2181,hdp3.local:2181
+
+
+
