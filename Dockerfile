@@ -35,7 +35,7 @@ RUN curl -o /opt/${ZOOKEEPER_VERSION}.tar.gz ${ZOOKEEPER_MIRROR}${ZOOKEEPER_VERS
 
 WORKDIR /opt/zookeeper
 
-EXPOSE 2181
+EXPOSE 2181 8080
 
 RUN chmod +x /usr/src/myapp/start.sh
 ENTRYPOINT [ "/usr/src/myapp/start.sh" ]
