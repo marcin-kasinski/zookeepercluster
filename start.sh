@@ -25,4 +25,4 @@ processZOOKEEPER_NODES
 cd /opt/zookeeper/
 bin/zkServer.sh start-foreground
 
-sleep 3000
+#sleep 30000
