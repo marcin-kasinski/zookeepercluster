@@ -31,7 +31,7 @@ RUN curl -o /opt/${ZOOKEEPER_VERSION}.tar.gz ${ZOOKEEPER_MIRROR}${ZOOKEEPER_VERS
 	cp /usr/src/myapp/conf/zoo.cfg $CONFIG && \
 	curl -o /opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent-${PROMETHEUS_JMX_AGENT_VERSION}.jar ${PROMETHEUS_JMX_AGENT_MIRROR}${PROMETHEUS_JMX_AGENT_VERSION}/jmx_prometheus_javaagent-${PROMETHEUS_JMX_AGENT_VERSION}.jar && \
 	ln -s /opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent-${PROMETHEUS_JMX_AGENT_VERSION}.jar /opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent.jar && \
-	sed -i -e 's/\r//g' /opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent_zookeeper.yml
+	sed -i -e 's/\r//g' /opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent_zookeeper.yaml
 
 WORKDIR /opt/zookeeper
 
