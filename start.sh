@@ -18,9 +18,11 @@ echo "dataLogDir=$ZOOKEEPER_LOGDIR" >> "$CONFIG"
 
 
 processZOOKEEPER_NODES
+process_param_config
 
-#/opt/kafka_2.12-1.1.0/bin/zookeeper-server-start.sh /opt/kafka_2.12-1.1.0/config/zookeeper.properties 
-#/opt/kafka_2.12-1.1.0/bin/kafka-server-start.sh /opt/kafka_2.12-1.1.0/config/server.properties
+echo "Configuration"
+cat $CONFIG
+
 
 cd /opt/zookeeper/
 bin/zkServer.sh start-foreground
