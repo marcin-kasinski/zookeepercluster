@@ -1,6 +1,6 @@
-FROM openjdk:8
+FROM openjdk:9
 #FROM ubuntu:16.04
-MAINTAINER Marcin Kasiñski <marcin.kasinski@gmail.com> 
+MAINTAINER Marcin Kasiï¿½ski <marcin.kasinski@gmail.com> 
 
 ENV ZOOKEEPER_MIRROR=http://ftp.man.poznan.pl/apache/zookeeper/zookeeper-3.4.13/ \
 	ZOOKEEPER_VERSION=zookeeper-3.4.13 \
