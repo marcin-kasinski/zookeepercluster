@@ -51,6 +51,8 @@ local value=$2
 key=${key#"$param_prefix"}
 #replace _ with .
 key=${key//[_]/.}
+#lowercase
+key=${key,,}
 
 echo "adding line to config key ["$key"] value ["$value"]"
 echo "$key=$value" >> $CONFIG
