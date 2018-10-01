@@ -28,6 +28,11 @@ cp $JAAS_FILE_LOCATION_RO $JAAS_FILE_LOCATION
 sed -i -e 's/{HOSTNAME_FQDN}/'"$HOSTNAME_FQDN"'/g' $JAAS_FILE_LOCATION
 cat $JAAS_FILE_LOCATION
 
+
+#change loglevel
+sed -i -e 's/=INFO/'"$LOG_LEVEL"'/g' /opt/zookeeper/conf/log4j.properties
+
+
 echo "Configuration"
 cat $CONFIG
 
