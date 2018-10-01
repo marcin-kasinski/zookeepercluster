@@ -25,7 +25,7 @@ RUN sed -i -e 's/\r//g' /usr/src/myapp/start.sh
 
 ADD conf/zoo.cfg /usr/src/myapp/conf/zoo.cfg
 
-RUN curl -o /opt/${ZOOKEEPER_VERSION}.tar.gz ${ZOOKEEPER_MIRROR}${ZOOKEEPER_VERSION}.tar.gz && \
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y krb5-user && curl -o /opt/${ZOOKEEPER_VERSION}.tar.gz ${ZOOKEEPER_MIRROR}${ZOOKEEPER_VERSION}.tar.gz && \
 	tar -zxf /opt/${ZOOKEEPER_VERSION}.tar.gz -C /opt && \
 	rm /opt/${ZOOKEEPER_VERSION}.tar.gz && ln -s /opt/${ZOOKEEPER_VERSION} /opt/zookeeper && \
 	cp /usr/src/myapp/conf/zoo.cfg $CONFIG && \

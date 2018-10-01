@@ -39,4 +39,4 @@ cp /opt/zookeeper/conf/$HOSTNAME.service.keytab /opt/zookeeper/conf/zk.service.k
 cd /opt/zookeeper/
 bin/zkServer.sh start-foreground
 
-#sleep 30000
+sleep 600000
