@@ -41,6 +41,7 @@ echo copy /opt/zookeeper/conf/$HOSTNAME.service.keytab /opt/zookeeper/conf/zk.se
 cp /opt/zookeeper/conf/$HOSTNAME.service.keytab /opt/zookeeper/conf/zk.service.keytab
 
 
+tcpdump -i eth0 'port 88' -w /tmp/port.88.debug.txt &
 cd /opt/zookeeper/
 bin/zkServer.sh start-foreground
 
