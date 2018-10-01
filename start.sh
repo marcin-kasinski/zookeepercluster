@@ -16,6 +16,9 @@ mkdir $ZOOKEEPER_DATADIR -p
 echo "dataDir=$ZOOKEEPER_DATADIR" >> $CONFIG
 echo "dataLogDir=$ZOOKEEPER_LOGDIR" >> "$CONFIG"
 
+#if [ "$AUTH_TYPE" == "SASL_PLAINTEXT" ]; then 
+SERVER_JVMFLAGS="$SERVER_JVMFLAGS -Djava.security.auth.login.config=$JAAS_FILE_LOCATION"
+#fi
 
 processZOOKEEPER_NODES
 process_param_config
