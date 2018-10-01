@@ -28,6 +28,10 @@ cat $JAAS_FILE_LOCATION
 echo "Configuration"
 cat $CONFIG
 
+echo copy /opt/zookeeper/conf/$HOSTNAME.service.keytab /opt/zookeeper/conf/zk.service.keytab
+
+cp /opt/zookeeper/conf/$HOSTNAME.service.keytab /opt/zookeeper/conf/zk.service.keytab
+
 
 cd /opt/zookeeper/
 bin/zkServer.sh start-foreground
