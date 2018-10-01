@@ -30,7 +30,7 @@ cat $JAAS_FILE_LOCATION
 
 
 #change loglevel
-sed -i -e 's/=INFO/'"$LOG_LEVEL"'/g' /opt/zookeeper/conf/log4j.properties
+sed -i -e 's/=INFO/='"$LOG_LEVEL"'/g' /opt/zookeeper/conf/log4j.properties
 
 
 echo "Configuration"
