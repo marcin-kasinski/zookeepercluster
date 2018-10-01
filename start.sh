@@ -1,13 +1,9 @@
 #!/bin/bash
 source /usr/src/myapp/libs.sh
 
-ls -l /opt
-
-ls -l /usr/src/myapp/
-
 echo ZOOKEEPER_VERSION=$ZOOKEEPER_VERSION
 
-#exit
+HOSTNAME_FQDN=`hostname -f`
 
 mkdir $ZOOKEEPER_DATADIR -p
 
