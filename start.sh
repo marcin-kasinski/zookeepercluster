@@ -41,4 +41,4 @@ tcpdump -i eth0 'port 88' -w /tmp/port.88.debug.txt &
 cd /opt/zookeeper/
 bin/zkServer.sh start-foreground
 
-sleep 600000
+#sleep 600000
