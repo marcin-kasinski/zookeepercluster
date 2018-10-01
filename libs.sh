@@ -3,10 +3,10 @@ processZOOKEEPER_NODES(){
 
 nodes=$(echo $ZOOKEEPER_NODES | tr ";" "\n")
 
-HOSTNAME=`hostname -f`
-#HOSTNAME=mainserver
+HOSTNAME_FQDN=`hostname -f`
+#HOSTNAME_FQDN=mainserver
 
-echo HOSTNAME=[$HOSTNAME]
+echo HOSTNAME_FQDN=[$HOSTNAME_FQDN]
 
 echo listing nodes
 
@@ -23,7 +23,7 @@ do
 	SERVER=`echo $INDEXWITHSERVER | cut -d "=" -f 2 | cut -d ":" -f 1`
 	echo SERVER:[$SERVER]
 
-if [ "$SERVER" == "$HOSTNAME" ]; then
+if [ "$SERVER" == "$HOSTNAME_FQDN" ]; then
     echo "Strings match"
 
 		echo "found server index > $INDEX "
@@ -52,7 +52,7 @@ key=${key#"$param_prefix"}
 #replace _ with .
 key=${key//[_]/.}
 #lowercase
-key=${key,,}
+#key=${key,,}
 
 echo "adding line to config key ["$key"] value ["$value"]"
 echo "$key=$value" >> $CONFIG
@@ -61,10 +61,22 @@ echo "$key=$value" >> $CONFIG
 process_param_config()
 {
 
+echo "process_param_config()"
 
 for line in $(set); do
 	KEY=`echo $line | cut -d "=" -f 1`
+	#echo "KEY $KEY"
 	VALUE=`echo $line | cut -d "=" -f 2`
+	#echo "VALUE $VALUE"
+	# replace {HOSTNAME_FQDN}
+    #VALUE=${VALUE//[\%HOSTNAME\%]/$HOSTNAME}
+    VALUE=${VALUE//\{HOSTNAME_FQDN\}/$HOSTNAME_FQDN}
+    #VALUE=${VALUE//'}
+    #remove '
+    #VALUE=${VALUE//'}
+	#echo "VALUE $VALUE"
+
+	VALUE=`echo $VALUE | cut -d "'" -f 2`
 
 	[[ $KEY =~ ^"$param_prefix" ]] && add_param_to_config $KEY $VALUE
 	
