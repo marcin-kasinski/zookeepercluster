@@ -71,11 +71,13 @@ echo "process_param_config()"
 for line in $(set); do
 	KEY=`echo $line | cut -d "=" -f 1`
 	#echo "KEY $KEY"
-	VALUE=`echo $line | cut -d "=" -f 2`
+	#get only value
+	VALUE=`echo "$line" | cut -d'=' -f2-`
 	#echo "VALUE $VALUE"
 	# replace {HOSTNAME_FQDN}
     #VALUE=${VALUE//[\%HOSTNAME\%]/$HOSTNAME}
     VALUE=${VALUE//\{HOSTNAME_FQDN\}/$HOSTNAME_FQDN}
+    VALUE=${VALUE//\{HOSTNAME\}/$HOSTNAME}
     #VALUE=${VALUE//'}
     #remove '
     #VALUE=${VALUE//'}
