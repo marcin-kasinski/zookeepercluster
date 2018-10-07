@@ -1,6 +1,11 @@
 #!/bin/bash
 source /usr/src/myapp/libs.sh
 
+echo "Starting..."
+
+echo "Environment variables ..."
+env
+
 echo ZOOKEEPER_VERSION=$ZOOKEEPER_VERSION
 
 HOSTNAME_FQDN=`hostname -f`
@@ -13,7 +18,7 @@ echo "dataDir=$ZOOKEEPER_DATADIR" >> $CONFIG
 echo "dataLogDir=$ZOOKEEPER_LOGDIR" >> "$CONFIG"
 
 #if [ "$AUTH_TYPE" == "SASL_PLAINTEXT" ]; then 
-SERVER_JVMFLAGS="$SERVER_JVMFLAGS $EXTRA_JAVA_ARGS
+SERVER_JVMFLAGS="$SERVER_JVMFLAGS $EXTRA_JAVA_ARGS"
 #fi
 
 processZOOKEEPER_NODES
