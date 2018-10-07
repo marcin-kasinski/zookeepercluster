@@ -13,7 +13,7 @@ echo "dataDir=$ZOOKEEPER_DATADIR" >> $CONFIG
 echo "dataLogDir=$ZOOKEEPER_LOGDIR" >> "$CONFIG"
 
 #if [ "$AUTH_TYPE" == "SASL_PLAINTEXT" ]; then 
-SERVER_JVMFLAGS="$SERVER_JVMFLAGS $EXTRA_JAVA_ARGS -Djava.security.auth.login.config=$JAAS_FILE_LOCATION"
+SERVER_JVMFLAGS="$SERVER_JVMFLAGS $EXTRA_JAVA_ARGS
 #fi
 
 processZOOKEEPER_NODES
@@ -37,7 +37,7 @@ echo copy /opt/zookeeper/conf/$HOSTNAME.service.keytab /opt/zookeeper/conf/zk.se
 cp /opt/zookeeper/conf/$HOSTNAME.service.keytab /opt/zookeeper/conf/zk.service.keytab
 
 
-tcpdump -i eth0 'port 88' -w /tmp/port.88.debug.txt &
+#tcpdump -i eth0 'port 88' -w /tmp/port.88.debug.txt &
 cd /opt/zookeeper/
 bin/zkServer.sh start-foreground
 
