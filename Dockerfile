@@ -3,7 +3,7 @@ FROM openjdk:9
 MAINTAINER Marcin Kasi�ski <marcin.kasinski@gmail.com> 
 
 ENV ZOOKEEPER_MIRROR=http://ftp.man.poznan.pl/apache/zookeeper/zookeeper-3.5.5/ \
-	ZOOKEEPER_VERSION=zookeeper-3.5.5 \
+	ZOOKEEPER_VERSION=apache-zookeeper-3.5.5 \
 	ZOOKEEPER_NODES="server.1=mainserver:2888:3888;server.4=mainserver2:2888:3888;server.3=mainserver3:2888:3888" \
 	ZOOKEEPER_DATADIR="/data/zookeeper" \
 	ZOOKEEPER_LOGDIR="/datalog/zookeeper" \
