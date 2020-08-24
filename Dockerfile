@@ -25,8 +25,10 @@ RUN sed -i -e 's/\r//g' /usr/src/myapp/start.sh
 
 ADD conf/zoo.cfg /usr/src/myapp/conf/zoo.cfg
 
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y krb5-user tcpdump && curl -o /opt/${ZOOKEEPER_VERSION}-bin.tar.gz ${ZOOKEEPER_MIRROR}${ZOOKEEPER_VERSION}-bin.tar.gz && \
-	tar -zxf /opt/${ZOOKEEPER_VERSION}-bin.tar.gz -C /opt && \
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y krb5-user tcpdump && \
+    echo Downloading ${ZOOKEEPER_MIRROR}${ZOOKEEPER_VERSION}-bin.tar.gz && \
+    curl -o /opt/${ZOOKEEPER_VERSION}-bin.tar.gz ${ZOOKEEPER_MIRROR}${ZOOKEEPER_VERSION}-bin.tar.gz && \
+	ls -l /opt/ && tar -zxf /opt/${ZOOKEEPER_VERSION}-bin.tar.gz -C /opt && \
 	rm /opt/${ZOOKEEPER_VERSION}-bin.tar.gz && ln -s /opt/${ZOOKEEPER_VERSION}-bin /opt/zookeeper && \
 	cp /usr/src/myapp/conf/zoo.cfg $CONFIG && \
 	curl -o /opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent-${PROMETHEUS_JMX_AGENT_VERSION}.jar ${PROMETHEUS_JMX_AGENT_MIRROR}${PROMETHEUS_JMX_AGENT_VERSION}/jmx_prometheus_javaagent-${PROMETHEUS_JMX_AGENT_VERSION}.jar && \
