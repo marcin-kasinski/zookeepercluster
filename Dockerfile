@@ -12,7 +12,7 @@ ENV ZOOKEEPER_MIRROR=http://ftp.man.poznan.pl/apache/zookeeper/zookeeper-3.6.1/ 
 	PROMETHEUS_JMX_AGENT_VERSION="0.3.1" \
 	PROMETHEUS_JMX_AGENT_PORT="8080"
 	
-ENV SERVER_JVMFLAGS=-javaagent:/opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent.jar=${PROMETHEUS_JMX_AGENT_PORT}:/opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent_zookeeper.yaml
+#ENV SERVER_JVMFLAGS=-javaagent:/opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent.jar=${PROMETHEUS_JMX_AGENT_PORT}:/opt/jmx_prometheus_javaagent/jmx_prometheus_javaagent_zookeeper.yaml
 	
 RUN mkdir /usr/src/myapp && mkdir /opt/jmx_prometheus_javaagent
 
