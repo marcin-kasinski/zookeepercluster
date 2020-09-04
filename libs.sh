@@ -70,7 +70,7 @@ process_param_config()
 
 echo "process_param_config()"
 
-for line in $(set); do
+for line in $(env); do
 	KEY=`echo $line | cut -d "=" -f 1`
 	#echo "KEY $KEY"
 	#get only value
@@ -87,7 +87,7 @@ for line in $(set); do
 
 	VALUE=`echo "$VALUE" | cut -d "'" -f 2`
 
-	[[ $KEY =~ ^"$param_prefix" ]] && add_param_to_config $KEY $VALUE
+	[[ $KEY =~ ^"$param_prefix" ]] && add_param_to_config "$KEY" "$VALUE"
 	
 done
 
