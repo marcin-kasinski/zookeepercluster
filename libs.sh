@@ -85,7 +85,7 @@ for line in $(set); do
     #VALUE=${VALUE//'}
 	#echo "VALUE $VALUE"
 
-	VALUE=`echo $VALUE | cut -d "'" -f 2`
+	VALUE=`echo "$VALUE" | cut -d "'" -f 2`
 
 	[[ $KEY =~ ^"$param_prefix" ]] && add_param_to_config $KEY $VALUE
 	
